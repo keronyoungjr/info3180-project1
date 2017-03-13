@@ -1,0 +1,53 @@
+{% extends "base.html" %} 
+
+{% block main %} 
+
+<h1 class="page-header">Create New Profile</h1>
+<p>Be sure to complete the form below to create your new user profile.</p>
+<br>
+
+
+{% include 'flash_messages.html' %}
+<form method="POST" action="{{ url_for('new_profile') }}" enctype="multipart/form-data">
+    {{ form.csrf_token }}
+    
+    <div class="form-group">
+        <label for="First Name">{{ form.firstname.label }}</label>
+        {{ form.firstname(size= 35, placeholder="Enter your First Name") }}
+    </div>
+    
+    <div class="form-group">
+        <label for="Last Name">{{ form.lastname.label }}</label>
+        {{ form.lastname(size=35, placeholder="Enter your Last Name") }}
+    </div>
+    
+     <div class="form-group">
+        <label for="Username">{{ form.username.label }}</b></label>
+        {{ form.username(size=35, placeholder="Enter your Username") }}
+    </div>
+    
+    <div class="form-group">
+        <label for="Age">{{ form.age.label }}</label>
+        {{ form.age  (size=35, placeholder="Enter your Age") }}
+    </div>
+    
+    <div class="form-group">
+        <label for="Gender">{{ form.gender.label }}</label>
+        {{ form.gender }}
+    </div>
+    
+    <div class="form-group">
+        <label for="Biography">{{ form.biography.label }}</label>
+        {{ form.biography(cols="50", rows="5") }}
+    </div>
+    
+    <div class="form-group">
+        <label for="Profile Picture">{{ form.image.label }}</label>
+        {{ form.image}}
+    </div>
+    
+    <button class="btn btn-primary active" type="submit">Add User</button>
+    
+</form>
+
+{% endblock %}
